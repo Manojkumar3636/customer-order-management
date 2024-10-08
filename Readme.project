@@ -1,0 +1,82 @@
+Table of Contents
+   1.Project Overview
+   2.Technologies Used
+   3.Database Schema
+
+Project Overview
+        The Customer Order Management System is a MySQL-based application designed to efficiently manage customer orders.
+It enables businesses to track customer information, manage product inventories, and process orders seamlessly.
+
+Technologies Used
+    MySQL
+
+Database Schema
+
+      Customers Table
+
+
+
+CREATE TABLE Customers (
+  Customer_ID INT PRIMARY KEY,
+  Name VARCHAR(255),
+  Email VARCHAR(255) UNIQUE,
+  Phone VARCHAR(20),
+  Address VARCHAR(255)
+);
+
+
+
+Orders Table
+
+
+
+CREATE TABLE Orders (
+  Order_ID INT PRIMARY KEY,
+  Customer_ID INT,
+  Order_Date DATE,
+  Total_Cost int,
+  FOREIGN KEY (Customer_ID) REFERENCES Customers(Customer_ID)
+);
+
+
+
+Products Table
+
+
+
+CREATE TABLE Products (
+  Product_ID INT PRIMARY KEY,
+  Product_Name VARCHAR(255),
+  Price int,
+  Category VARCHAR(100)
+);
+
+
+
+Order_Items Table
+
+
+
+CREATE TABLE Order_Items (
+  Order_Item_ID INT PRIMARY KEY,
+  Order_ID INT,
+  Product_ID INT,
+  Quantity INT,
+  FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+  FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
+);
+
+
+
+Employees Table
+
+
+CREATE TABLE Employe (
+  Employee_ID INT PRIMARY KEY,
+  Name VARCHAR(255),
+  Department VARCHAR(100),
+  Salary int,
+  Hire_Date varchar(50)
+);
+
+
